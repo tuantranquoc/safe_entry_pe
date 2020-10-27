@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
 
   getPreviousPage() {
     const url = '/rest/user/list?page=';
-    if (this.count > 1) {
+    if (this.count >= 1) {
       this.count--;
     }
     this.http.get(url + (this.count)).toPromise().then((data: any) => {

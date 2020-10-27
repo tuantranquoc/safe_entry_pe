@@ -22,13 +22,15 @@ export class TemperatureSettingComponent implements OnInit {
 
   postData() {
     const url = '/rest/temperature/config';
-    this.http.post(url, {emails: this.emails, temperature: this.temperature}).toPromise().then((data: any) => {
-      console.log(data);
-    });
     const url_list = '/rest/temperature/config/list';
-    this.data = this.http.get(url_list).toPromise().then((data: any) => {
-      console.log('user list: ', data.content);
-      this.data = data.content;
+    this.http.post(url, {emails: this.emails, temperature: this.temperature}).toPromise().then((data: any) => {
+      console.log('post status: ', data);
+      if (data.statusCode === 200) {
+        this.http.get(url_list).toPromise().then((data_: any) => {
+          console.log('user list: ', data_.content);
+          this.data = data_.content;
+        });
+      }
     });
   }
 
@@ -42,7 +44,7 @@ export class TemperatureSettingComponent implements OnInit {
 
   getPreviousPage() {
     const url = '/rest/temperature/config/list?page=';
-    if (this.count > 1) {
+    if (this.count >= 1) {
       this.count--;
     }
     this.http.get(url + (this.count)).toPromise().then((data: any) => {

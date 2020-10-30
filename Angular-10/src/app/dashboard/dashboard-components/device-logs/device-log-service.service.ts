@@ -1,7 +1,7 @@
-import {Observable} from 'rxjs';
-import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {catchError, map, tap} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -17,27 +17,8 @@ export class DeviceLogServiceService {
   }
 
   getListDeviceLogs(): Observable<any> {
-    const headers = {'X-CSRFToken': this.getCookie('csrftoken')};
-    console.log(this.getCookie('csrftoken'));
-    const options = {headers: headers};
-    const Observable = this.http.get(this.api.getListDeviceLogs, options);
-    return Observable;
-  }
-
-  private getCookie(name: string) {
-    const ca: Array<string> = document.cookie.split(';');
-    const caLen: number = ca.length;
-    const cookieName = `${name}=`;
-    let c: string;
-
-    for (let i = 0; i < caLen; i += 1) {
-      c = ca[i].replace(/^\s+/g, '');
-      // tslint:disable-next-line:triple-equals
-      if (c.indexOf(cookieName) == 0) {
-        return c.substring(cookieName.length, c.length);
-      }
-    }
-    return '';
+    const Observable = this.http.get(this.api.getListDeviceLogs);
+      return Observable;
   }
 
 

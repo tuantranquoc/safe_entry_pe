@@ -1,33 +1,77 @@
-<table border="1" class="table table-bordered" style="width: 100%">
-  <thead class=" table-bordered">
-  <tr style="background: #3CB371; color: #ECF0F1 ">
-    <th>
-      userId
-    </th>
-    <th>name</th>
-    <th>temperature</th>
-    <th>timestamp</th>
-    <th>deviceId</th>
-    <th>location</th>
-  </tr>
-  </thead>
+<div>
+  <button class="btn btn-success" style="margin-bottom: 20px;" (click)="showHideFilter()">Filter</button>
+  <div style="margin: 20px;" *ngIf="filter">
+    <form action="">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="name" name="name" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>email</label>
+        <input type="text" [(ngModel)]="email" name="email" name="email" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>temperature</label>
+        <input type="number" [(ngModel)]="temperature" name="temperature" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>From</label>
+        <input type="date" [(ngModel)]="fromDate" name="from" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>To</label>
+        <input type="date" [(ngModel)]="toDate" name="to" class="form-control"/>
+      </div>
+      <div style="float: right;">
+        <button class="btn btn-primary" (click)="search()" style="margin: 20px;">Apply</button>
+        <button class="btn btn-primary" style="margin: 20px;">Clear</button>
+      </div>
 
-  <tr *ngFor="let item of data">
-    <td>
-      {{item.userId}}
-    </td>
-    <td>{{item.name}}</td>
-    <td>{{item.temperature}}</td>
-    <td>{{item.timestamp}}</td>
-    <td>{{item.deviceId}}</td>
-    <td>{{item.location}}</td>
-  </tr>
-</table>
-<nav aria-label="Page navigation example" style="position: absolute;
-  right: 20px" class="mr-3">
-  <ul class="pagination">
-    <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary">previous</button></li>
-    <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>
+    </form>
 
-  </ul>
-</nav>
+  </div>
+  <div>
+    <table border="1" class="table table-bordered" style="text-align: center;">
+      <thead class="table-bordered">
+      <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
+        <th class="col-md-1">userId</th>
+        <th class="col-md-3">Name</th>
+        <th class="col-md-2">Temperature</th>
+        <th class="col-md-2">Time</th>
+        <th class="col-md-1">DeviceId</th>
+        <th class="col-md-1">Location</th>
+      </tr>
+      </thead>
+      <tr *ngFor="let item of data" class="d-flex">
+        <td class="col-md-1">{{item.userId}}</td>
+        <td class="col-md-3">{{item.name}}</td>
+        <td class="col-md-2">{{item.temperature}}</td>
+        <td class="col-md-2">{{item.date}}</td>
+        <td class="col-md-1">{{item.deviceId}}</td>
+        <td class="col-md-1">{{item.location}}</td>
+        <td class="col-md-1">
+          <a routerLink="/dashboard/chart-by-user" [queryParams]="{userId:item.userId,name:item.name}"
+             class="btn btn-primary">Detail</a>
+        </td>
+      </tr>
+    </table>
+    <nav aria-label="Page navigation example" class="mr-3">
+      <ul class="pagination">
+        <li class="page-item pr-1" [(ngModel)]="pageIndex">
+          <button (click)="getPreviousPage()" class="btn btn-primary rounded p-1">previous</button>
+        </li>
+        <li class="page-item mr-1" [(ngModel)]="pageIndex">
+          <button (click)="getNextPage()" class="btn btn-primary rounded p-1">next</button>
+        </li>
+        <li class="page-item">
+          <button class="btn btn-primary rounded p-1">{{total}}</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <router-outlet></router-outlet>
+
+</div>
+

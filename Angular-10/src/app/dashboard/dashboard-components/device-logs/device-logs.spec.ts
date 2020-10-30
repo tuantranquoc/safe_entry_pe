@@ -1,4 +1,3 @@
-// @ts-ignore
 import { DeviceLogs } from './device-logs';
 
 describe('DeviceLogs', () => {

@@ -1,3 +1,4 @@
+import { DeviceComponent } from './device/device.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -22,9 +23,8 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastsContainer } from './toast/toast-container';
+import  {UserComponent}from './user/user.component';
 import { TemperatureSettingComponent } from './temperature-setting/temperature-setting.component';
-import { UserComponent } from './user/user.component';
-import { DeviceComponent } from './device/device.component';
 
 @NgModule({
   imports: [

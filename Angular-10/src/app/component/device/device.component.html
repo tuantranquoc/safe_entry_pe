@@ -1,22 +1,37 @@
-<table border="1" class="table table-bordered">
-  <thead class=" table-bordered">
-  <tr style="background: #3CB371; color: #ECF0F1 ">
-    <th>
-      Device id
-    </th>
-    <th>Location</th>
-  </tr>
-  </thead>
+<div>
+  <div style="float: right;margin-bottom: 20px;">
+    <button class="btn btn-primary">Add Device</button>
+  </div>
+  <div>
+    <table border="1" class="table table-bordered" style="text-align: center;">
+      <thead class=" table-bordered">
+      <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
+        <th class="col-md-4">
+          Device id
+        </th>
+        <th class="col-md-4">Location</th>
+        <th class="col-md-4">&nbsp;</th>
+      </tr>
+      </thead>
 
-  <tr *ngFor="let item of data">
-    <td style="background: white">{{item.id}}</td>
-    <td style="background: white">{{item.location}}</td>
-  </tr>
-</table>
-<nav aria-label="Page navigation example" class="mr-3">
-  <ul class="pagination">
-    <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary">previous</button></li>
-    <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>
+      <tr *ngFor="let item of data" class="d-flex">
+        <td style="background: white" class="col-md-4">{{item.id}}</td>
+        <td style="background: white" class="col-md-4">{{item.location}}</td>
+        <td style="background: white" class="col-md-4">
+          <button class="btn btn-primary">Edit</button>
+          |
+          <button class="btn btn-primary">Delete</button>
+        </td>
+      </tr>
+    </table>
+    <nav aria-label="Page navigation example"  class="mr-3">
+      <ul class="pagination">
+        <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary rounded p-1">previous</button></li>
+        <li class="page-item mr-1" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary rounded p-1">next</button></li>
+        <li class="page-item" ><button class="btn btn-primary rounded p-1">{{total}}</button></li>
+      </ul>
+    </nav>
+  </div>
 
-  </ul>
-</nav>
+</div>
+

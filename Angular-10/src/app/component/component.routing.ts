@@ -1,3 +1,5 @@
+import { DeviceComponent } from './device/device.component';
+import { UserComponent } from './user/user.component';
 import { Routes } from '@angular/router';
 
 import { NgbdpregressbarBasicComponent } from './progressbar/progressbar.component';
@@ -16,8 +18,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import {TemperatureSettingComponent} from './temperature-setting/temperature-setting.component';
-import {UserComponent} from "./user/user.component";
-import {DeviceComponent} from "./device/device.component";
+
 
 export const ComponentsRoutes: Routes = [
 	{
@@ -36,41 +37,17 @@ export const ComponentsRoutes: Routes = [
 				}
 			},
 			{
-				path: 'card',
+				path: 'setting',
 				component: TemperatureSettingComponent,
 				data: {
-					title: 'Temperature config',
+					title: '',
 					urls: [
 						{ title: 'Dashboard', url: '/dashboard' },
 						{ title: 'ngComponent' },
-						{ title: 'Cards' }
+						{ title: 'Setting' }
 					]
 				}
 			},
-      {
-        path: 'user',
-        component: UserComponent,
-        data: {
-          title: 'User',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Users' }
-          ]
-        }
-      },
-      {
-        path: 'device',
-        component: DeviceComponent,
-        data: {
-          title: 'Device',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Devices' }
-          ]
-        }
-      },
 			{
 				path: 'pagination',
 				component: NgbdpaginationBasicComponent,
@@ -216,12 +193,26 @@ export const ComponentsRoutes: Routes = [
 				}
 			},
 			{
-				path: 'toast',
+				path: 'setting',
 				component: TemperatureSettingComponent,
 				data: {
-					title: 'Setting',
+					title: '',
 				}
 			},
+			{
+				path: 'user',
+				component: UserComponent,
+				data: {
+					title: '',
+				}
+			},
+			{
+				path: 'device',
+				component: DeviceComponent,
+				data: {
+					title: '',
+				}
+			}
 		]
 	}
 ];
